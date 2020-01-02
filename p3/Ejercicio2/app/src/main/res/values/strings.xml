@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TODO</string>
+    <string name="add">add</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
+    <string name="opAdd">opAdd</string>
+    <string name="modificar">modificar</string>
+    <string name="eliminar">eliminar</string>
+    <string name="btAñadir">+</string>
+</resources>

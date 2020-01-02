@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WaterTraining</string>
+    <string name="add">add</string>
+    <string name="stats">stats</string>
+    <string name="editar">editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="btAñadir">+</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CalcularNIF</string>
+    <string name="title_main_activity">ActividadPrincipal</string>
+    <string name="dni">dni:</string>
+    <string name="NIF">NIF:</string>
+    <string name="label_default_result">Sin Letra</string>
+
+
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">listaCompra</string>
+    <string name="btAñadir">+</string>
+    <string name="Add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+</resources>
