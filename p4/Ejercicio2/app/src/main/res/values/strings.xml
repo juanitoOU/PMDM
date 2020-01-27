@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Ejercicio2</string>
+    <string name="lblNombre">Nombre</string>
+    <string name="pistaNombre">Nombre...</string>
+    <string name="lblCantidad">Cantidad</string>
+    <string name="btCancelar">Cancela</string>
+    <string name="btGuardar">Guarda</string>
+    <string name="Fecha">fecha</string>
+    <string name="btAñadir">+</string>
+    <string name="lblFecha">Fecha</string>
+    <string name="pistaFecha">fecha...</string>
+    <string name="modificar">Edit</string>
+    <string name="eliminar">Delete</string>
+    <string name="add">Add</string>
+</resources>

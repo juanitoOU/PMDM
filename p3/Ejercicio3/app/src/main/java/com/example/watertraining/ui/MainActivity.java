@@ -52,11 +52,11 @@ public class MainActivity extends AppCompatActivity {
         boolean toret = false;
         switch( menuItem.getItemId() ) {
             case R.id.opAdd:
-               MainActivity.this.onAdd();
+                MainActivity.this.onAdd();
                 toret = true;
                 break;
             case R.id.opStats:
-               MainActivity.this.stats();
+                MainActivity.this.stats();
                 toret = true;
                 break;
 

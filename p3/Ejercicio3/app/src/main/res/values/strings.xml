@@ -4,5 +4,14 @@
     <string name="stats">stats</string>
     <string name="editar">editar</string>
     <string name="eliminar">Eliminar</string>
+    <string name="lblNombre">Nombre</string>
+    <string name="pistaNombre">Nombre...</string>
+    <string name="lblCantidad">Cantidad</string>
+    <string name="btCancelar">Cancela</string>
+    <string name="btGuardar">Guarda</string>
     <string name="btAñadir">+</string>
+    <string name="pistaDistancia">kilometros ...</string>
+    <string name="pistaTime">minutos...</string>
+
+
 </resources>

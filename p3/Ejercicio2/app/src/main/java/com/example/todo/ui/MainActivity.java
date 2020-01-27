@@ -243,22 +243,6 @@ public class MainActivity extends Activity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void caducados(int aux){
         posiciones.clear();
         Calendar now = Calendar.getInstance();
