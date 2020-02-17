@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ListaContactosSql</string>
+    <string name="lblApellidos">Apellidos *</string>
+    <string name="lblTelefono">Telefono *</string>
+    <string name="lblEmail">Email</string>
+    <string name="lblNombre">Nombre *</string>
+    <string name="pistaNombre">nombre</string>
+    <string name="pistaApellidos">apellidos</string>
+    <string name="pistaTelefono">123456789</string>
+    <string name="pistaEmail">example@example.com</string>
+    <string name="lblModifica">Edit</string>
+    <string name="lblElimina">Delete</string>
+    <string name="msgNoPos">Posicion incorrecta</string>
+    <string name="save">save</string>
+    <string name="cancel">back</string>
+    <string name="añadir">add</string>
+</resources>
