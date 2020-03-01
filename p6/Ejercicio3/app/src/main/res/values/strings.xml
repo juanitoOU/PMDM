@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AndroidCountry</string>
+    <string name="status_ok">Country fetched</string>
+    <string name="buscar_por_codigo_postal">Buscar por codigo postal</string>
+    <string name="c_p">C.P.</string>
+    <string name="pais">Pais</string>
+    <string name="provincia">Provincia</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="barrio">Barrio</string>
+    <string name="status_incorrect_url">Invalid URL</string>
+    <string name="status_init">Preparing</string>
+    <string name="status_error">error fetching countrys</string>
+    <string name="status_not_available">N/A</string>
+    <string name="status_not_connected">please activate net connectivity</string>
+</resources>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ConexionWifi</string>
+    <string name="action_settings">Settings</string>
+    <string name="red_inalambrica">Red Inalámbrica:</string>
+    <string name="velocidad">Mb/s</string>
+    <string name="velocidad_de_enlace">Velocidad de Enlace:</string>
+    <string name="direccion_ip">Dirección IP:</string>
+    <string name="conectividad_ip">Conectividad IP:</string>
+    <string name="estado">Estado</string>
+    <string name="ping_ip">Ping IP</string>
+    <string name="ip">IP</string>
+    <string name="nombre_conexion">Nombre</string>
+    <string name="estado_wifi">Estado de la Conexión WIFI:</string>
+    <string name="reniciar">Reniciar</string>
+    <string name="datos_conexion_tcp_ip">Datos Conexión TCP/IP.</string>
+    <string name="wifi_settings">wifi_settings</string>
+    <string name="wifi_on">wifi_on</string>
+    <string name="wifi_off">wifi_off</string>
+    <string name="wifi">Wifi</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="confirm_wifi_state">Confirm Wifi State</string>
+    <string name="conexion_datos_moviles">Conexion datos moviles</string>
+    <string name="estado_datos">Estado datos moviles</string>
+    <string name="sin_estado">Sin Estado</string>
+    <string name="sin_ping">Sin Ping</string>
+    <string name="sin_ip">Sin IP</string>
+    <string name="sin_velocidad">Sin Velocidad</string>
+    <string name="sin_nombre">Sin Nombre</string>
+</resources>
