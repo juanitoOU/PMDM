@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Título de la WEB</title>
+    <meta charset="UTF-8">
+    <meta name="title" content="Lista Compra">
+    <meta name="description" content="Descripcion de la WEB">
+    <style type="text/css">
+    body {
+      font-family: "Gill Sans", sans-serif;
+      font-size: 15pt;
+      margin: 3em;
+      text-align: center;
+      text-position: center;
+    }
+
+  </style>
+</head>
+
+<body>
+<div  id="div1"><h1></h1></div>
+<form id="formCalc" onSubmit="javascript: getFromAndroid(); return false;">
+    <input id="elemento" type="text" size="20" placeholder="Element"/>
+<input type="submit" value="+" id="btnPlus">
+    <input type="button" id="bedit" value="edit" onclick="edit()">
+    <input type="button" id="bstop" value="Confirm" onclick="stop()">
+</form>
+
+</body>
+
+
+<script type="text/javascript">
+
+
+
+function getFromAndroid() {
+
+         var elemento = document.getElementById("elemento");
+
+         var newDiv = document.createElement("div");
+
+         var newContent = document.createTextNode(elemento.value);
+         newDiv.appendChild(newContent);
+        newDiv.setAttribute("id", "elementos");
+         var currentDiv = document.getElementById("div1");
+         document.body.insertBefore(newDiv, currentDiv);
+          Android.showToast( elemento.value );
+         document.getElementById("elemento").value = "";
+
+
+
+    }
+
+    function edit(){
+        document.designMode = 'on';
+         Android.showToast("Edicion activada");
+
+    }
+    function stop(){
+        document.designMode = 'off';
+         Android.showToast("Edicion desactivada");
+
+    }
+
+</script>
+</html>
