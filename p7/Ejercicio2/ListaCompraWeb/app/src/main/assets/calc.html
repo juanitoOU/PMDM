@@ -14,53 +14,151 @@
       text-position: center;
     }
 
-  </style>
+
+    </style>
 </head>
 
-<body>
-<div  id="div1"><h1></h1></div>
-<form id="formCalc" onSubmit="javascript: getFromAndroid(); return false;">
-    <input id="elemento" type="text" size="20" placeholder="Element"/>
-<input type="submit" value="+" id="btnPlus">
-    <input type="button" id="bedit" value="edit" onclick="edit()">
-    <input type="button" id="bstop" value="Confirm" onclick="stop()">
+<body onload="getLista()">
+    <div id="div1"><h1></h1></div>
+    <form id="formCalc" onSubmit="javascript: add();">
+        <input id="name" type="text" size="20" placeholder="nombre" onkeyup="comprobarCampo()"><br>
+        <input id="cantidad" type="number" size="20" placeholder="cantidad" onkeyup="comprobarCampo()"><br>
+        <input type="button" id="buton" value="+" onclick="add()" disabled=true>
+        <input type="button" id="butonM" value="Modificar" onclick="edit()" hidden=true>
+        <input type="button" id="butonC" value="Cancelar" onclick="delete()" hidden=true>
 </form>
-
+    <ul id="lista" style="list-style: none" ></ul>
 </body>
 
 
 <script type="text/javascript">
 
+        var int=null;
+        var num = 0;
 
 
-function getFromAndroid() {
+   function getLista(){
 
-         var elemento = document.getElementById("elemento");
+            var codes = Android.getCodes();
+            var nombres = Android.getNames();
+            var cantidades = Android.getCantidades();
+            var sptCantidades = cantidades.split(".");
+            var sptCodes = codes.split(".");
+            var sptNombres = nombres.split(".");
+            var lista = document.getElementById("lista");
 
-         var newDiv = document.createElement("div");
+            if (nombres.length!=0){
 
-         var newContent = document.createTextNode(elemento.value);
-         newDiv.appendChild(newContent);
-        newDiv.setAttribute("id", "elementos");
-         var currentDiv = document.getElementById("div1");
-         document.body.insertBefore(newDiv, currentDiv);
-          Android.showToast( elemento.value );
-         document.getElementById("elemento").value = "";
+            for ( var i = 0; i < sptNombres.length;i++){
+                if(sptNombres[i].length!=0){
 
+                var li = document.createElement("li");
+                li.setAttribute("id", splitIds[i]);
+                var texto = document.createTextNode("Nombre: " + sptNombres[i] + ", Cant.-: " + sptCantidades[i] + " ");
+                li.appendChild(texto);
+                var edit = document.createElement("button");
+                edit.innerHTML="edit";
+                edit.addEventListener("click", function edit(){
+                    nombre.value="";
+                    cantidad.value="";
+                    document.getElementById("buton").hidden =true;
+                    document.getElementById("butonE").hidden =false;
+                    document.getElementById("butonB").hidden =false;
+                    int = li.getAttribute("code");
+                }, false);
+                li.appendChild(edit);
+                var delete = document.createElement("button");
+                delete.innerHTML= "X";
+                delete.addEventListener("click", function delete(delete){
+                Android.delete(parseInt(delete.currentTarget.parentNode.code));
+                delete.currentTarget.parentNode.remove();
+                }, false);
+                li.appendChild(delete);
+                lista.appendChild(li);
+}
 
+function edit(){
+                var aux = document.getElementById(int);
+                aux.innerHTML="";
+                var nombre = document.getElementById("nombre");
+                var cantidad = document.getElementById("cantidad");
+                Android.edit(aux.getAttribute("code"), nombre.value, cantidad.value);
+                var texto = document.createTextNode("Nombre: " + nombre.value + ", Cant.-: " + cantidad.value + " ");
+                aux.appendChild(texto);
+                var edit = document.createElement("button");
+                edit.innerHTML="edit";
+                modificar.addEventListener("click", function edit(){
+                    nombre.value="";
+                    cantidad.value="";
+                    document.getElementById("buton").hidden =true;
+                    document.getElementById("butonE").hidden =false;
+                    document.getElementById("butonB").hidden =false;
+                    int = li.getAttribute("code");
+                }, false);
+                aux.appendChild(edit);
+                var delete = document.createElement("button");
+                delete.innerHTML= "X";
+                delete.addEventListener("click", function delete(delete){
+                Android.delete(parseInt(delete.currentTarget.parentNode.code)); ///////
+                delete.currentTarget.parentNode.remove();
+                }, false);
+                aux.appendChild(delete);
+                 cancelar();
 
-    }
+        }
 
-    function edit(){
-        document.designMode = 'on';
-         Android.showToast("Edicion activada");
+ function cancelar(){
+            nombre.value="";
+            cantidad.value="";
+            document.getElementById("buton").hidden = false;
+            document.getElementById("butonE").hidden =true;
+            document.getElementById("butonB").hidden =true;
+        }
 
-    }
-    function stop(){
-        document.designMode = 'off';
-         Android.showToast("Edicion desactivada");
+         function comprobarCampo(){
 
-    }
+            var nombre = document.getElementById("nombre");
+            var cantidad = document.getElementById("cantidad");
+            var button = document.getElementById("buton");
+                if(cantidad.value=="" || nombre.value==""  ){
+                    button.disabled=true;
+                } else {
+                    button.disabled=false;
+                }
+        }
 
+            function add(){
+                var nombre = document.getElementById("nombre");
+                var cantidad = document.getElementById("cantidad");
+                var lista = document.getElementById("lista");
+                var li = document.createElement("li");
+                li.setAttribute("code", num);
+                num++;
+                var texto = document.createTextNode("Nombre: " + nombre.value + ", Cant.-: " + cantidad.value + " ");
+                li.appendChild(texto);
+                var edit = document.createElement("button");
+                edit.innerHTML="edit";
+                edit.addEventListener("click", function edit(edit){
+                    document.getElementById("buton").hidden =true;
+                    document.getElementById("butonE").hidden =false;
+                    document.getElementById("butonB").hidden =false;
+                    int = edit.currentTarget.parentNode.code;
+                    console.log(int);
+                }, false);
+                li.appendChild(edit);
+                var delete = document.createElement("button");
+                delete.innerHTML= "X";
+                delete.setAttribute("id", li.getAttribute("id"));
+                delete.addEventListener("click", function eliminar(eliminar){
+                Android.delete(parseInt(delete.currentTarget.parentNode.id));
+                delete.currentTarget.parentNode.remove();
+                }, false);
+                li.appendChild(delete);
+                add.appendChild(li);
+                Android.add(li.getAttribute("code"), nombre.value, cantidad.value);
+
+                nombre.value = "";
+                cantidad.value = "";
+            }
 </script>
 </html>

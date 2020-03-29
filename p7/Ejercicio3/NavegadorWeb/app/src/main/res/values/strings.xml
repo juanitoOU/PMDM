@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NavegadorWeb</string>
+    <string name="ir">Ir</string>
+    <string name="anterior">anterior</string>
+    <string name="siguiente">siguiente</string>
+    <string name="detener">Detener</string>
+</resources>

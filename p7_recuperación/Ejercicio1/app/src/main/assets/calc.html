@@ -1,0 +1,148 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Calculator</title>
+    <style type="text/css">
+    form {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      border: solid 1px #c2c2c2;
+      padding-bottom: 10px;
+      margin: auto;
+      background: #fafafa;
+}
+ div {
+    width: 75%;
+    padding: 16px 32px;
+    font-size: 16px;
+    margin: 8px 8px;
+    border: 1px solid silver;
+    border-radius: 1px;
+    text-position: center;
+    text-align: left;
+    color: #333;
+    background: #ccc;
+}
+
+.result{
+    text-position:center;
+}
+    input[type=text] {
+    width: 75%;
+    padding: 16px 32px;
+    font-size: 16px;
+    margin: 8px 0;
+    border: 1px solid silver;
+    border-radius: 1px;
+    text-position: center;
+    text-align: left;
+    color: #333;
+    background: #ccc;
+    }
+
+   input[type=button], input[type=submit]{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    font-size: 16px;
+    min-width: 21%;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+    </style>
+
+
+</head>
+<body>
+<p>
+<form id="formCalc" onSubmit="javascript: calculate(); return false;">
+    <input id="edOp1" type="text" size="10" placeholder="0"/>
+    <br />
+    <input type="radio" value="suma" name="operacion" id="suma" checked/> +
+    <input type="radio" value="resta" name="operacion" id="resta"/> -
+    <input type="radio" value="multiplicacion" name="operacion" id="multiplicacion"/> x
+    <input type="radio" value="division" name="operacion" id="division"/> /
+    <br />
+    <input id="edOp2" type="text" size="10" placeholder="0" />
+    <br />
+    <input id="btCalc" type="submit" value="="/>
+</form>
+</p>
+
+<p class="result">
+    Result:
+<div id="dvResult">
+</div>
+</p>
+
+</body>
+<script type="text/javascript">
+
+
+
+function calculate(){
+var elementos = document.getElementsByName("operacion");
+
+for(var i=0; i<elementos.length; i++) {
+
+}
+if (elementos[0].checked){
+    var edOp1 = document.getElementById( "edOp1" );
+	var edOp2 = document.getElementById( "edOp2" );
+	var dvResult = document.getElementById( "dvResult" );
+	dvResult.innerHTML = "";
+	var pResult = document.createElement( "p" );
+	dvResult.appendChild( pResult );
+	var op1 = parseInt( edOp1.value, 10 );
+	var op2 = parseInt( edOp2.value, 10 );
+	var res = op1 + op2;
+	pResult.appendChild( document.createTextNode( res.toString() ) );
+	Android.showToast( res.toString() );
+}
+if (elementos[1].checked){
+    var edOp1 = document.getElementById( "edOp1" );
+	var edOp2 = document.getElementById( "edOp2" );
+	var dvResult = document.getElementById( "dvResult" );
+	dvResult.innerHTML = "";
+	var pResult = document.createElement( "p" );
+	dvResult.appendChild( pResult );
+	var op1 = parseInt( edOp1.value, 10 );
+	var op2 = parseInt( edOp2.value, 10 );
+	var res = op1 - op2;
+	pResult.appendChild( document.createTextNode( res.toString() ) );
+
+	
+}
+if (elementos[2].checked){
+    var edOp1 = document.getElementById( "edOp1" );
+	var edOp2 = document.getElementById( "edOp2" );
+	var dvResult = document.getElementById( "dvResult" );
+	dvResult.innerHTML = "";
+	var pResult = document.createElement( "p" );
+	dvResult.appendChild( pResult );
+	var op1 = parseInt( edOp1.value, 10 );
+	var op2 = parseInt( edOp2.value, 10 );
+	var res = op1 * op2;
+	pResult.appendChild( document.createTextNode( res.toString() ) );
+	Android.showToast( res.toString() );
+}
+if (elementos[3].checked){
+    var edOp1 = document.getElementById( "edOp1" );
+	var edOp2 = document.getElementById( "edOp2" );
+	var dvResult = document.getElementById( "dvResult" );
+	dvResult.innerHTML = "";
+	var pResult = document.createElement( "p" );
+	dvResult.appendChild( pResult );
+	var op1 = parseInt( edOp1.value, 10 );
+	var op2 = parseInt( edOp2.value, 10 );
+	var res = op1 / op2;
+	pResult.appendChild( document.createTextNode( res.toString() ) );
+	Android.showToast( res.toString() );
+}
+
+}
+</script>
+</html>

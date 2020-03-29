@@ -7,12 +7,15 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.juvera.listacompraweb.BD.BDManager;
+
 import java.util.ArrayList;
 
 import static com.juvera.listacompraweb.MainActivity.lista;
 
 public class WebAppInterface {
     Context context;
+    BDManager bd = new BDManager(context);
 
 
     /** Instantiate the interface and set the context */
@@ -28,22 +31,49 @@ public class WebAppInterface {
         Toast.makeText( context, toast, Toast.LENGTH_LONG ).show();
     }
 
-
     @JavascriptInterface
-    public void javaMethodGet(String val) {
+    public void add(String codigo, String nombre, String cantidad){
 
-        lista.add(val);
-        Toast.makeText(context, val + "GUARDADO", Toast.LENGTH_SHORT).show();
+        Item item = new Item(codigo, nombre, cantidad);
+
+        bd.add(item);
     }
 
     @JavascriptInterface
-    public ArrayList<String> javaMethodSet() {
-        for(String s : lista){
-            String val = s;
-            Toast.makeText(context, val + "GUARDADO", Toast.LENGTH_SHORT).show();
-        }
-
-        return lista;
+    public void delete(int c){
+        bd.delete(c);
     }
 
+    @JavascriptInterface
+    public void edit(String c, String nombre, String cantidad){
+
+        Item item = new Item(c, nombre, cantidad);
+
+        bd.edit(item);
+
+    }
+
+    @JavascriptInterface
+    public String getNames(){
+
+        String bdAux = bd.getNames();
+
+        return bdAux;
+    }
+
+    @JavascriptInterface
+    public String getCantidades(){
+
+        String bdAux = bd.getCantidades();
+
+        return bdAux;
+    }
+
+    @JavascriptInterface
+    public String getCodes(){
+
+        String bdAux = bd.getCodes();
+
+        return bdAux;
+    }
 }

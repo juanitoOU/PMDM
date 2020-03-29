@@ -29,17 +29,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    static ArrayList<String> lista ;
-    String TAG = "MainActivity";
-    Context context;
+    static ArrayList<Item> lista ;
     WebView wvView;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate( savedInstanceState );
-        requestWindowFeature( Window.FEATURE_NO_TITLE );
         setContentView( R.layout.activity_main );
-        lista = new ArrayList<>();
+        lista = new ArrayList<Item>();
 
         wvView = (WebView) this.findViewById( R.id.wvView );
 

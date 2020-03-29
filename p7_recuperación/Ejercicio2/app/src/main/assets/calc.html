@@ -1,0 +1,172 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>List</title>
+    <style type="text/css">
+        body {
+            font-family: "Gill Sans", sans-serif;
+            font-size: 15pt;
+            margin: 3em;
+            text-align: center;
+        }
+        ul {
+        list-style: none;
+        }
+
+    </style>
+</head>
+<body onload="getLista()">
+<form>
+
+    <label for="nombre">Compra</label>
+    <input type="text" id="nombre" name="nombre" onkeyup="comprobarCampo()">  <br>
+
+    <label for="Cantidad">Cantidad</label>
+    <input type="number" id="cantidad" name="cantidad" onkeyup="comprobarCampo()">  <br>
+
+    <input type="button" id="buton" value="Add" onclick="add()" disabled=true>
+    <input type="button" id="butonM" value="Edit" onclick="edit()" hidden=true>
+    <input type="button" id="butonC" value="Cancel" onclick="cancelar()" hidden=true>
+
+</form>
+
+<ul id="lista" >    </ul>
+</body>
+<script>
+        var int=null;
+        var num = 0;
+            function add(){
+                var nombre = document.getElementById("nombre");
+                var cantidad = document.getElementById("cantidad");
+                var lista = document.getElementById("lista");
+                var li = document.createElement("li");
+                li.setAttribute("id", num);
+                num++;
+                var text = document.createTextNode("Nombre: " + nombre.value + ", Cantidad: " + cantidad.value + " ");
+                li.appendChild(text);
+                var edit = document.createElement("button");
+                edit.innerHTML="editar";
+                edit.addEventListener("click", function edit(edit){
+                    document.getElementById("buton").hidden =true;
+                    document.getElementById("butonM").hidden =false;
+                    document.getElementById("butonC").hidden =false;
+                    int = edit.currentTarget.parentNode.id;
+                    console.log(int);
+                }, false);
+                li.appendChild(edit);
+                var eliminar = document.createElement("button");
+                eliminar.innerHTML= "X";
+                eliminar.setAttribute("id", li.getAttribute("id"));
+                eliminar.addEventListener("click", function eliminar(eliminar){
+                Android.delete(parseInt(eliminar.currentTarget.parentNode.id));
+                eliminar.currentTarget.parentNode.remove();
+                }, false);
+                li.appendChild(eliminar);
+                lista.appendChild(li);
+                Android.add(li.getAttribute("id"), nombre.value, cantidad.value);
+
+                nombre.value = "";
+                cantidad.value = "";
+            }
+        function comprobarCampo(){
+
+            var nombre = document.getElementById("nombre");
+            var cantidad = document.getElementById("cantidad");
+            var button = document.getElementById("buton");
+
+                if(nombre.value=="" || cantidad.value==""){
+                    button.disabled=true;
+                } else {
+                    button.disabled=false;
+                }
+        }
+        function cancelar(){
+            nombre.value="";
+            cantidad.value="";
+            document.getElementById("buton").hidden = false;
+            document.getElementById("butonM").hidden =true;
+            document.getElementById("butonC").hidden =true;
+        }
+        function edit(){
+            var aux = document.getElementById(int);
+            aux.innerHTML="";
+            var nombre = document.getElementById("nombre");
+            var cantidad = document.getElementById("cantidad");
+            Android.edit(aux.getAttribute("id"), nombre.value, cantidad.value);
+            var text = document.createTextNode("Nombre: " + nombre.value + ", Cantidad: " + cantidad.value + " ");
+                aux.appendChild(text);
+                var edit = document.createElement("button");
+                edit.innerHTML="editar";
+                edit.addEventListener("click", function edit(){
+                    nombre.value="";
+                    cantidad.value="";
+                    document.getElementById("buton").hidden =true;
+                    document.getElementById("butonM").hidden =false;
+                    document.getElementById("butonC").hidden =false;
+                    int = li.getAttribute("id");
+                }, false);
+                aux.appendChild(edit);
+                var eliminar = document.createElement("button");
+                eliminar.innerHTML= "X";
+                eliminar.addEventListener("click", function eliminar(eliminar){
+                Android.delete(parseInt(eliminar.currentTarget.parentNode.id));
+                eliminar.currentTarget.parentNode.remove();
+                }, false);
+                aux.appendChild(eliminar);
+            cancelar();
+
+        }
+        function getLista(){
+
+            var nombres = Android.getNombres();
+            var splitNombres = nombres.split(".");
+
+            var cantidades = Android.getCantidades();
+            var splitCantidades = cantidades.split(".");
+
+            var ids = Android.getIds();
+            var splitIds = ids.split(".");
+
+            var lista = document.getElementById("lista");
+
+            if (nombres.length!=0){
+
+            for ( var i = 0; i < splitNombres.length;i++){
+                if(splitNombres[i].length!=0){
+
+                var li = document.createElement("li");
+                li.setAttribute("id", splitIds[i]);
+                var text = document.createTextNode("Nombre: " + splitNombres[i] + ", Cantidad: " + splitCantidades[i] + " ");
+                li.appendChild(text);
+                var edit = document.createElement("button");
+                edit.innerHTML="editar";
+                edit.addEventListener("click", function edit(){
+                    nombre.value="";
+                    cantidad.value="";
+                    document.getElementById("buton").hidden =true;
+                    document.getElementById("butonM").hidden =false;
+                    document.getElementById("butonC").hidden =false;
+                    int = li.getAttribute("id");
+                }, false);
+                li.appendChild(edit);
+                var eliminar = document.createElement("button");
+                eliminar.innerHTML= "X";
+                eliminar.addEventListener("click", function eliminar(eliminar){
+                Android.delete(parseInt(eliminar.currentTarget.parentNode.id));
+                eliminar.currentTarget.parentNode.remove();
+                }, false);
+                li.appendChild(eliminar);
+                lista.appendChild(li);
+}
+            }
+
+           var num2 = splitIds[splitIds.length-1];
+           num2++;
+           num = num2;
+           }
+
+        }
+
+</script>
+</html>

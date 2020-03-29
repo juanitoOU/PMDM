@@ -7,9 +7,9 @@
     tools:context="com.juvera.listacompraweb.MainActivity">
 
 
-    <WebView android:id="@+id/wvView"
+    <WebView
+        android:id="@+id/wvView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
